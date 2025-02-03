@@ -44,6 +44,15 @@ Route::prefix('user')->controller(App\Http\Controllers\User\UserController::clas
     Route::delete('/{user}', 'destroy')->middleware('auth:sanctum');
 });
 
+// ----BRANCH---- //
+Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{branch}', 'show');
+    Route::post('/', 'store')->middleware('auth:sanctum');
+    Route::post('/{branch}', 'update')->middleware('auth:sanctum');
+    Route::delete('/{branch}', 'destroy')->middleware('auth:sanctum');
+});
+
 // ----SETTING---- //
 Route::prefix('setting')->controller(App\Http\Controllers\SettingController::class)->group(function () {
     Route::get('/', 'index');
