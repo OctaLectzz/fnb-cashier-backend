@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         // Owner
         User::create([
-            'image' => 'user-profile-default.jpg',
+            'avatar' => 'user-profile-default.jpg',
             'name' => 'Wine POS',
             'email' => 'winepos@gmail.com',
             'password' => bcrypt('password'),

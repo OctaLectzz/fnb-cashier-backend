@@ -22,20 +22,19 @@ class ProfileController extends Controller
     public function editprofile(Request $request)
     {
         $data = $request->validate([
-            'image' => 'nullable',
+            'avatar' => 'nullable',
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email,' . auth()->id(),
             'phone_number' => 'nullable|string|max:15',
-            'birthday' => 'nullable|date',
             'address' => 'nullable',
             'bio' => 'nullable'
         ]);
 
-        // Image
-        if ($request->hasFile('image')) {
-            $imageName = time() . '-' . $request->name . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('users'), $imageName);
-            $data['image'] = $imageName;
+        // Avatar
+        if ($request->hasFile('avatar')) {
+            $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+            $data['avatar'] = $avatarName;
         }
 
         $user = User::find(auth()->id());

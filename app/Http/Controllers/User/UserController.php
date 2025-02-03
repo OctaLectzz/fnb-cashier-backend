@@ -19,21 +19,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'image' => 'nullable',
+            'avatar' => 'nullable',
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'phone_number' => 'nullable|string|max:15',
-            'birthday' => 'nullable|date',
-            'address' => 'nullable',
-            'bio' => 'nullable'
+            'phone_number' => 'nullable|string|max:15'
         ]);
 
-        // Image
-        if ($request->hasFile('image')) {
-            $imageName = time() . '-' . $request->name . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('users'), $imageName);
-            $data['image'] = $imageName;
+        // Avatar
+        if ($request->hasFile('avatar')) {
+            $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+            $data['avatar'] = $avatarName;
         }
 
         // Password
@@ -58,21 +55,17 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->validate([
-            'image' => 'nullable',
+            'avatar' => 'nullable',
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'required|min:8',
-            'phone_number' => 'nullable|string|max:15',
-            'birthday' => 'nullable|date',
-            'address' => 'nullable',
-            'bio' => 'nullable'
+            'phone_number' => 'nullable|string|max:15'
         ]);
 
-        // Image
-        if ($request->hasFile('image')) {
-            $imageName = time() . '-' . $request->name . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('users'), $imageName);
-            $data['image'] = $imageName;
+        // Avatar
+        if ($request->hasFile('avatar')) {
+            $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $avatarName);
+            $data['avatar'] = $avatarName;
         }
 
         $user->update($data);
