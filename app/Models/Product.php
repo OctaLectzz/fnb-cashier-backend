@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Branch extends Model
+class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -14,11 +14,11 @@ class Branch extends Model
         'id'
     ];
     protected $attributes = [
-        'image' => 'branch-default.jpg'
+        'image' => 'product-default.jpg'
     ];
 
-    public function roles()
+    public function category()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsTo(Category::class);
     }
 }

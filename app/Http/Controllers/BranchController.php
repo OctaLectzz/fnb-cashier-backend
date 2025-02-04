@@ -24,7 +24,8 @@ class BranchController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
             'phone_number' => 'nullable|string|max:255',
-            'address' => 'nullable'
+            'address' => 'nullable',
+            'status' => 'required|boolean'
         ]);
 
         // Branch Code

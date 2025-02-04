@@ -53,6 +53,24 @@ Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class
     Route::delete('/{branch}', 'destroy')->middleware('auth:sanctum');
 });
 
+// ----CATEGORY---- //
+Route::prefix('category')->controller(App\Http\Controllers\CategoryController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{category}', 'show');
+    Route::post('/', 'store')->middleware('auth:sanctum');
+    Route::put('/{category}', 'update')->middleware('auth:sanctum');
+    Route::delete('/{category}', 'destroy')->middleware('auth:sanctum');
+});
+
+// ----PRODUCT---- //
+Route::prefix('product')->controller(App\Http\Controllers\ProductController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{product}', 'show');
+    Route::post('/', 'store')->middleware('auth:sanctum');
+    Route::post('/{product}', 'update')->middleware('auth:sanctum');
+    Route::delete('/{product}', 'destroy')->middleware('auth:sanctum');
+});
+
 // ----SETTING---- //
 Route::prefix('setting')->controller(App\Http\Controllers\SettingController::class)->group(function () {
     Route::get('/', 'index');

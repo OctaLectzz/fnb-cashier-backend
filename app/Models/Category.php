@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Branch extends Model
+class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [
         'id'
     ];
-    protected $attributes = [
-        'image' => 'branch-default.jpg'
-    ];
 
-    public function roles()
+    public function products()
     {
-        return $this->hasMany(Role::class);
+        return $this->hasMany(Product::class);
     }
 }
