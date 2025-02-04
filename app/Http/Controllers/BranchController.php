@@ -20,10 +20,10 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone_number' => 'nullable|string|max:15|regex:/^[0-9]+$/',
+            'phone_number' => 'nullable|string|max:255',
             'address' => 'nullable'
         ]);
 
@@ -68,10 +68,10 @@ class BranchController extends Controller
     public function update(Request $request, Branch $branch)
     {
         $data = $request->validate([
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone_number' => 'nullable|string|max:15|regex:/^[0-9]+$/',
+            'phone_number' => 'nullable|string|max:255',
             'address' => 'nullable',
             'status' => 'required|boolean'
         ]);

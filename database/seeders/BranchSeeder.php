@@ -20,5 +20,15 @@ class BranchSeeder extends Seeder
             'email' => 'winepos@gmail.com',
             'phone_number' => '0896 - 9022 - 0404'
         ]);
+
+        Branch::create([
+            'branch_code' => strtoupper(Str::random(8)),
+            'image' => 'IMG1738662428-wine-pos-solo.jpg',
+            'name' => 'Wine POS Solo',
+            'email' => 'winepossolo@gmail.com',
+            'phone_number' => '0895 - 6052 - 10002',
+            'address' => 'Jl. Slamet Riyadi, No. 108, Laweyan, Surakarta',
+            'status' => 0
+        ]);
     }
 }

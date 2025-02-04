@@ -16,14 +16,14 @@ class BranchResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => $this->image,
             'branch_code' => $this->branch_code,
+            'image' => $this->image,
             'name' => $this->name,
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'address' => $this->address,
             'status' => $this->status,
-            'roles' => new RoleResource($this->roles)
+            'roles' => $this->roles ? RoleResource::collection($this->roles) : ''
         ];
     }
 }
