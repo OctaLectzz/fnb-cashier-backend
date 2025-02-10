@@ -13,6 +13,39 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
+            'sku' => 'STK001',
+            'image' => 'IMG1738682711-chicken-steak-hot-plate.jpg',
+            'slug' => 'chicken-steak-hot-plate',
+            'name' => 'Chicken Steak Hot Plate',
+            'category_id' => 1,
+            'min_purchase' => 1,
+            'selling_price' => 16000,
+            'purchase_price' => 21000,
+            'unit' => 'porsi',
+            'weight' => 0.85,
+            'length' => null,
+            'width' => null,
+            'height' => null,
+            'status' => 1
+        ]);
+        Product::create([
+            'sku' => 'CK009',
+            'image' => 'IMG1738684528-chicken-katsu.jpg',
+            'slug' => 'chicken-katsu',
+            'name' => 'Chicken Katsu',
+            'category_id' => 1,
+            'min_purchase' => 1,
+            'selling_price' => 18000,
+            'purchase_price' => 25000,
+            'unit' => 'porsi',
+            'weight' => 0.65,
+            'length' => null,
+            'width' => null,
+            'height' => null,
+            'status' => 1
+        ]);
+
+        Product::create([
             'sku' => 'ESP001',
             'slug' => 'espresso-coffee',
             'name' => 'Espresso Coffee',
@@ -40,7 +73,7 @@ class ProductSeeder extends Seeder
             'length' => null,
             'width' => null,
             'height' => null,
-            'status' => 1
+            'status' => 0
         ]);
         Product::create([
             'sku' => 'CHK003',
@@ -101,7 +134,7 @@ class ProductSeeder extends Seeder
             'length' => null,
             'width' => null,
             'height' => null,
-            'status' => 1
+            'status' => 0
         ]);
     }
 }

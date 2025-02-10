@@ -18,6 +18,7 @@ class SettingResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'address' => $this->address,
             'logo' => $this->logo,
             'logo_size' => $this->logo_size,
             'about' => $this->about

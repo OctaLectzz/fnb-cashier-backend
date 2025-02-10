@@ -20,10 +20,11 @@ class SettingController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string',
-            'description' => 'required',
+            'description' => 'nullable',
+            'address' => 'nullable',
             'logo' => 'required|image',
             'logo_size' => 'required|integer',
-            'about' => 'required'
+            'about' => 'nullable'
         ]);
 
         // Logo
@@ -53,10 +54,11 @@ class SettingController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string',
-            'description' => 'required',
+            'description' => 'nullable',
+            'address' => 'nullable',
             'logo' => 'required|image',
             'logo_size' => 'required|integer',
-            'about' => 'required'
+            'about' => 'nullable'
         ]);
 
         // Logo

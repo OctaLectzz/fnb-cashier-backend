@@ -71,6 +71,15 @@ Route::prefix('product')->controller(App\Http\Controllers\ProductController::cla
     Route::delete('/{product}', 'destroy')->middleware('auth:sanctum');
 });
 
+// ----TRANSACTION---- //
+Route::prefix('transaction')->controller(App\Http\Controllers\TransactionController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{transaction}', 'show');
+    Route::post('/', 'store')->middleware('auth:sanctum');
+    Route::put('/{transaction}', 'update')->middleware('auth:sanctum');
+    Route::delete('/{transaction}', 'destroy')->middleware('auth:sanctum');
+});
+
 // ----SETTING---- //
 Route::prefix('setting')->controller(App\Http\Controllers\SettingController::class)->group(function () {
     Route::get('/', 'index');
