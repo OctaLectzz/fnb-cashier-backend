@@ -18,7 +18,7 @@ class TransactionSeeder extends Seeder
         $cash_denominations = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000];
 
         for ($i = 1; $i <= 10; $i++) {
-            $invoice = 'WINE' . now()->format('YmdHis') . '-' . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
+            $invoice = 'WINE' . now()->format('YmdHis') . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
             $total_price = 0;
             $discount = rand(0, 50);
             $payment_amount = 0;

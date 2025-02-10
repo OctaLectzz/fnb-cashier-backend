@@ -33,6 +33,7 @@ class TransactionResource extends JsonResource
                     'id' => $transactiondetail->id,
                     'transaction_id' => $transactiondetail->transaction_id,
                     'product_id' => $transactiondetail->product_id,
+                    'product_image' => $transactiondetail->product->image ?? null,
                     'product_name' => $transactiondetail->product->name ?? null,
                     'product_price' => $transactiondetail->product->purchase_price ?? null,
                     'total_price' => $transactiondetail->total_price,

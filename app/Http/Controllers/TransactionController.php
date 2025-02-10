@@ -33,7 +33,7 @@ class TransactionController extends Controller
             'transactiondetails.*.total_price' => 'required|numeric|min:0',
             'transactiondetails.*.quantity' => 'required|integer|min:1'
         ]);
-        $data['invoice'] = 'WINE' . now()->format('YmdHis') . '-' . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
+        $data['invoice'] = 'WINE' . now()->format('YmdHis') . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
 
         DB::beginTransaction();
         try {
@@ -78,49 +78,16 @@ class TransactionController extends Controller
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
             'payment_type' => 'required|string',
-            'total_price' => 'required|numeric|min:0',
-            'discount' => 'nullable|numeric|min:0',
-            'payment_amount' => 'required|numeric|min:0',
-            'money_amount' => 'required|numeric|min:0',
-            'change_amount' => 'required|numeric|min:0',
-            'notes' => 'nullable|string',
-            'transactiondetails' => 'required|array',
-            'transactiondetails.*.product_id' => 'required|integer|exists:products,id',
-            'transactiondetails.*.total_price' => 'required|numeric|min:0',
-            'transactiondetails.*.quantity' => 'required|integer|min:1'
+            'notes' => 'nullable|string'
         ]);
 
-        DB::beginTransaction();
-        try {
-            $transaction->update($data);
+        $transaction->update($data);
 
-            TransactionDetail::where('transaction_id', $transaction->id)->delete();
-
-            foreach ($data['transactiondetails'] as $transactiondetail) {
-                TransactionDetail::create([
-                    'transaction_id' => $transaction->id,
-                    'product_id' => $transactiondetail['product_id'],
-                    'total_price' => $transactiondetail['total_price'],
-                    'quantity' => $transactiondetail['quantity'],
-                ]);
-            }
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Transaction Edited Successfully',
-                'data' => new TransactionResource($transaction)
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Transaction Edited Failed',
-                'error' => $e->getMessage(),
-            ], 500);
-        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Transaction Edited Successfully',
+            'data' => new TransactionResource($transaction)
+        ]);
     }
 
     public function destroy(Transaction $transaction)
