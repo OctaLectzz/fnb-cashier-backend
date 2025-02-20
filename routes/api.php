@@ -36,48 +36,48 @@ Route::prefix('profile')->controller(App\Http\Controllers\User\ProfileController
 });
 
 // ----USER---- //
-Route::prefix('user')->controller(App\Http\Controllers\User\UserController::class)->group(function () {
+Route::prefix('user')->controller(App\Http\Controllers\User\UserController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{user}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::post('/{user}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{user}', 'destroy')->middleware('auth:sanctum');
+    Route::post('/', 'store');
+    Route::post('/{user}', 'update');
+    Route::delete('/{user}', 'destroy');
 });
 
 // ----BRANCH---- //
-Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class)->group(function () {
+Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{branch}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::post('/{branch}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{branch}', 'destroy')->middleware('auth:sanctum');
+    Route::post('/', 'store');
+    Route::post('/{branch}', 'update');
+    Route::delete('/{branch}', 'destroy');
 });
 
 // ----CATEGORY---- //
-Route::prefix('category')->controller(App\Http\Controllers\CategoryController::class)->group(function () {
+Route::prefix('category')->controller(App\Http\Controllers\CategoryController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{category}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::put('/{category}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{category}', 'destroy')->middleware('auth:sanctum');
+    Route::post('/', 'store');
+    Route::put('/{category}', 'update');
+    Route::delete('/{category}', 'destroy');
 });
 
 // ----PRODUCT---- //
-Route::prefix('product')->controller(App\Http\Controllers\ProductController::class)->group(function () {
+Route::prefix('product')->controller(App\Http\Controllers\ProductController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{product}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::post('/{product}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{product}', 'destroy')->middleware('auth:sanctum');
+    Route::post('/', 'store');
+    Route::post('/{product}', 'update');
+    Route::delete('/{product}', 'destroy');
 });
 
 // ----TRANSACTION---- //
-Route::prefix('transaction')->controller(App\Http\Controllers\TransactionController::class)->group(function () {
+Route::prefix('transaction')->controller(App\Http\Controllers\TransactionController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{transaction}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::put('/{transaction}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{transaction}', 'destroy')->middleware('auth:sanctum');
+    Route::post('/', 'store');
+    Route::put('/{transaction}', 'update');
+    Route::delete('/{transaction}', 'destroy');
 });
 
 // ----SETTING---- //
