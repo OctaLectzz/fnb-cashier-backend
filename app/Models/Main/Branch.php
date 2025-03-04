@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Main;
 
+use App\Models\Role;
 use App\Models\Employee\Employee;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Branch extends Model
 {

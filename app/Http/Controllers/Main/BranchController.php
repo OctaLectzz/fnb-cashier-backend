@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Main;
 
 use App\Models\Role;
-use App\Models\Branch;
+use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Resources\BranchResource;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Main\BranchResource;
 
 class BranchController extends Controller
 {

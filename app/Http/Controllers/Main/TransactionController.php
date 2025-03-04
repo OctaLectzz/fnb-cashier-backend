@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Main;
 
-use App\Models\Transaction;
 use Illuminate\Http\Request;
-use App\Models\TransactionDetail;
+use App\Models\Main\Transaction;
+use App\Models\Main\TransactionDetail;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\TransactionResource;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Main\TransactionResource;
 
 class TransactionController extends Controller
 {

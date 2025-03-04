@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Main;
 
-use App\Models\Category;
+use App\Models\Main\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder

@@ -60,7 +60,7 @@ Route::prefix('setting')->controller(App\Http\Controllers\SettingController::cla
 // ----------------------------------------------------------  MAIN  ---------------------------------------------------------- //
 
 // ----BRANCH---- //
-Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class)->middleware('auth:sanctum')->group(function () {
+Route::prefix('branch')->controller(App\Http\Controllers\Main\BranchController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{branch}', 'show');
     Route::post('/', 'store');
@@ -69,7 +69,7 @@ Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class
 });
 
 // ----CATEGORY---- //
-Route::prefix('category')->controller(App\Http\Controllers\CategoryController::class)->middleware('auth:sanctum')->group(function () {
+Route::prefix('category')->controller(App\Http\Controllers\Main\CategoryController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{category}', 'show');
     Route::post('/', 'store');
@@ -78,7 +78,7 @@ Route::prefix('category')->controller(App\Http\Controllers\CategoryController::c
 });
 
 // ----PRODUCT---- //
-Route::prefix('product')->controller(App\Http\Controllers\ProductController::class)->middleware('auth:sanctum')->group(function () {
+Route::prefix('product')->controller(App\Http\Controllers\Main\ProductController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{product}', 'show');
     Route::post('/', 'store');
@@ -87,7 +87,7 @@ Route::prefix('product')->controller(App\Http\Controllers\ProductController::cla
 });
 
 // ----TRANSACTION---- //
-Route::prefix('transaction')->controller(App\Http\Controllers\TransactionController::class)->middleware('auth:sanctum')->group(function () {
+Route::prefix('transaction')->controller(App\Http\Controllers\Main\TransactionController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
     Route::get('/{transaction}', 'show');
     Route::post('/', 'store');

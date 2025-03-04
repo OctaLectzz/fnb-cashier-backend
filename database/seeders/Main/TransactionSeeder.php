@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Main;
 
-use App\Models\Product;
-use App\Models\Transaction;
-use App\Models\TransactionDetail;
+use App\Models\Main\Product;
 use Illuminate\Database\Seeder;
+use App\Models\Main\Transaction;
+use App\Models\Main\TransactionDetail;
 
 class TransactionSeeder extends Seeder
 {

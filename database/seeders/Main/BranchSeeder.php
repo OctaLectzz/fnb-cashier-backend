@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Main;
 
-use App\Models\Branch;
+use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
