@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -34,21 +35,21 @@ class ProfileController extends Controller
 
         // Avatar
         if ($request->hasFile('avatar')) {
-            $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
+            $avatarName = time() . '-' .  Str::slug($data['name']) . '.' . $request->avatar->getClientOriginalExtension();
             $request->avatar->move(public_path('avatars'), $avatarName);
             $data['avatar'] = $avatarName;
         }
 
         // KTP
         if ($request->hasFile('ktp_image')) {
-            $ktpImageName = time() . '-' . $request->name . '.' . $request->ktp_image->getClientOriginalExtension();
+            $ktpImageName = time() . '-' .  Str::slug($data['name']) . '.' . $request->ktp_image->getClientOriginalExtension();
             $request->ktp_image->move(public_path('users/ktps'), $ktpImageName);
             $data['ktp_image'] = $ktpImageName;
         }
 
         // NPWP
         if ($request->hasFile('npwp_image')) {
-            $npwpImageName = time() . '-' . $request->name . '.' . $request->npwp_image->getClientOriginalExtension();
+            $npwpImageName = time() . '-' .  Str::slug($data['name']) . '.' . $request->npwp_image->getClientOriginalExtension();
             $request->npwp_image->move(public_path('users/npwps'), $npwpImageName);
             $data['npwp_image'] = $npwpImageName;
         }

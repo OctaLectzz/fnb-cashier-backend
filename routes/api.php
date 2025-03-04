@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|------------------------------------------------------------------------------------
 | API Routes
-|--------------------------------------------------------------------------
+|------------------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -44,6 +44,21 @@ Route::prefix('user')->controller(App\Http\Controllers\User\UserController::clas
     Route::delete('/{user}', 'destroy');
 });
 
+// ----SETTING---- //
+Route::prefix('setting')->controller(App\Http\Controllers\SettingController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{setting}', 'show');
+    Route::post('/', 'store')->middleware('auth:sanctum');
+    Route::post('/{setting}', 'update')->middleware('auth:sanctum');
+    Route::delete('/{setting}', 'destroy')->middleware('auth:sanctum');
+});
+
+
+
+
+
+// ----------------------------------------------------------  MAIN  ---------------------------------------------------------- //
+
 // ----BRANCH---- //
 Route::prefix('branch')->controller(App\Http\Controllers\BranchController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
@@ -80,11 +95,29 @@ Route::prefix('transaction')->controller(App\Http\Controllers\TransactionControl
     Route::delete('/{transaction}', 'destroy');
 });
 
-// ----SETTING---- //
-Route::prefix('setting')->controller(App\Http\Controllers\SettingController::class)->group(function () {
+// ----------------------------------------------------------  MAIN  ---------------------------------------------------------- //
+
+
+
+
+// ----------------------------------------------------------  EMPLOYEE  ---------------------------------------------------------- //
+
+// ----SCHEDULE---- //
+Route::prefix('schedule')->controller(App\Http\Controllers\Employee\ScheduleController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
-    Route::get('/{setting}', 'show');
-    Route::post('/', 'store')->middleware('auth:sanctum');
-    Route::post('/{setting}', 'update')->middleware('auth:sanctum');
-    Route::delete('/{setting}', 'destroy')->middleware('auth:sanctum');
+    Route::get('/{schedule}', 'show');
+    Route::post('/', 'store');
+    Route::put('/{schedule}', 'update');
+    Route::delete('/{schedule}', 'destroy');
 });
+
+// ----EMPLOYEE---- //
+Route::prefix('employee')->controller(App\Http\Controllers\Employee\EmployeeController::class)->middleware('auth:sanctum')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{employee}', 'show');
+    Route::post('/', 'store');
+    Route::post('/{employee}', 'update');
+    Route::delete('/{employee}', 'destroy');
+});
+
+// ----------------------------------------------------------  EMPLOYEE  ---------------------------------------------------------- //

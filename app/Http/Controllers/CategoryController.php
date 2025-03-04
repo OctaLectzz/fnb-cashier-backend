@@ -50,6 +50,10 @@ class CategoryController extends Controller
             'description' => 'nullable'
         ]);
 
+        // Slug
+        $slug = Str::slug($data['name']);
+        $data['slug'] = Category::where('slug', $slug)->exists() ? $slug . '-' . Str::random(3) : $slug;
+
         $category->update($data);
 
         return response()->json([

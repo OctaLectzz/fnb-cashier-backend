@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Employee\EmployeeSeeder;
+use Database\Seeders\Employee\ScheduleSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             TransactionSeeder::class,
+            ScheduleSeeder::class,
+            EmployeeSeeder::class,
             SettingSeeder::class
         ]);
     }
