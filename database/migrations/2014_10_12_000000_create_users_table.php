@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('ktp_image')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('npwp_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

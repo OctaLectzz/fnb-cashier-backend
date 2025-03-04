@@ -19,7 +19,11 @@ class UserResource extends JsonResource
             'avatar' => $this->avatar,
             'name' => $this->name,
             'email' => $this->email,
-            'phone_number' => $this->phone_number
+            'phone_number' => $this->phone_number,
+            'ktp' => $this->ktp,
+            'ktp_image' => $this->ktp_image,
+            'npwp' => $this->npwp,
+            'npwp_image' => $this->npwp_image
         ];
     }
 }

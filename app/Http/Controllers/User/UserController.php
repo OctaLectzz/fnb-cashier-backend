@@ -23,14 +23,32 @@ class UserController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'phone_number' => 'nullable|string|max:15'
+            'phone_number' => 'nullable|string|max:15',
+            'ktp' => 'nullable|string|max:16',
+            'ktp_image' => 'nullable',
+            'npwp' => 'nullable|string|max:30',
+            'npwp_image' => 'nullable'
         ]);
 
         // Avatar
         if ($request->hasFile('avatar')) {
             $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
-            $request->avatar->move(public_path('avatars'), $avatarName);
+            $request->avatar->move(public_path('users/avatars'), $avatarName);
             $data['avatar'] = $avatarName;
+        }
+
+        // KTP
+        if ($request->hasFile('ktp_image')) {
+            $ktpImageName = time() . '-' . $request->name . '.' . $request->ktp_image->getClientOriginalExtension();
+            $request->ktp_image->move(public_path('users/ktps'), $ktpImageName);
+            $data['ktp_image'] = $ktpImageName;
+        }
+
+        // NPWP
+        if ($request->hasFile('npwp_image')) {
+            $npwpImageName = time() . '-' . $request->name . '.' . $request->npwp_image->getClientOriginalExtension();
+            $request->npwp_image->move(public_path('users/npwps'), $npwpImageName);
+            $data['npwp_image'] = $npwpImageName;
         }
 
         // Password
@@ -58,7 +76,11 @@ class UserController extends Controller
             'avatar' => 'nullable',
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'phone_number' => 'nullable|string|max:15'
+            'phone_number' => 'nullable|string|max:15',
+            'ktp' => 'nullable|string|max:16',
+            'ktp_image' => 'nullable',
+            'npwp' => 'nullable|string|max:30',
+            'npwp_image' => 'nullable'
         ]);
 
         // Avatar
@@ -66,6 +88,20 @@ class UserController extends Controller
             $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
             $request->avatar->move(public_path('avatars'), $avatarName);
             $data['avatar'] = $avatarName;
+        }
+
+        // KTP
+        if ($request->hasFile('ktp_image')) {
+            $ktpImageName = time() . '-' . $request->name . '.' . $request->ktp_image->getClientOriginalExtension();
+            $request->ktp_image->move(public_path('users/ktps'), $ktpImageName);
+            $data['ktp_image'] = $ktpImageName;
+        }
+
+        // NPWP
+        if ($request->hasFile('npwp_image')) {
+            $npwpImageName = time() . '-' . $request->name . '.' . $request->npwp_image->getClientOriginalExtension();
+            $request->npwp_image->move(public_path('users/npwps'), $npwpImageName);
+            $data['npwp_image'] = $npwpImageName;
         }
 
         $user->update($data);

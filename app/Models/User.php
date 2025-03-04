@@ -22,7 +22,9 @@ class User extends Authenticatable
         'id'
     ];
     protected $attributes = [
-        'avatar' => 'user-profile-default.jpg'
+        'avatar' => 'user-profile-default.jpg',
+        'ktp_image' => 'ktp-default.jpg',
+        'npwp_image' => 'npwp-default.jpg'
     ];
 
     /**

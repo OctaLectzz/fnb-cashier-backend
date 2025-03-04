@@ -12,20 +12,12 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $data = $request->validate([
-            'avatar' => 'nullable',
+        $request->validate([
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'phone_number' => 'nullable|string|max:15'
         ]);
-
-        // Avatar
-        if ($request->hasFile('avatar')) {
-            $avatarName = time() . '-' . $request->name . '.' . $request->avatar->getClientOriginalExtension();
-            $request->avatar->move(public_path('avatars'), $avatarName);
-            $data['avatar'] = $avatarName;
-        }
 
         // Password
         $input = $request->all();
