@@ -59,6 +59,9 @@ Route::prefix('setting')->controller(App\Http\Controllers\SettingController::cla
 
 // ----------------------------------------------------------  MAIN  ---------------------------------------------------------- //
 
+// ----HOME---- //
+Route::get('/main', [App\Http\Controllers\Main\HomeController::class, 'index'])->middleware('auth:sanctum');
+
 // ----BRANCH---- //
 Route::prefix('branch')->controller(App\Http\Controllers\Main\BranchController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
