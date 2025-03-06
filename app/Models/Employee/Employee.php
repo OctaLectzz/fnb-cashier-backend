@@ -25,6 +25,10 @@ class Employee extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
     public function schedule()
     {
         return $this->belongsTo(Schedule::class);

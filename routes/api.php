@@ -105,6 +105,15 @@ Route::prefix('transaction')->controller(App\Http\Controllers\Main\TransactionCo
 
 // ----------------------------------------------------------  EMPLOYEE  ---------------------------------------------------------- //
 
+// ----ROLE---- //
+Route::prefix('role')->controller(App\Http\Controllers\Employee\RoleController::class)->middleware('auth:sanctum')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{role}', 'show');
+    Route::post('/', 'store');
+    Route::put('/{role}', 'update');
+    Route::delete('/{role}', 'destroy');
+});
+
 // ----SCHEDULE---- //
 Route::prefix('schedule')->controller(App\Http\Controllers\Employee\ScheduleController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');

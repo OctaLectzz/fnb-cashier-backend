@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Main;
 
-use App\Models\Role;
 use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -43,15 +42,6 @@ class BranchController extends Controller
         }
 
         $branch = Branch::create($data);
-
-        // Create Default Roles
-        $roles = ['Manager', 'Cashier', 'Waitress', 'Kitchen'];
-        foreach ($roles as $role) {
-            Role::create([
-                'name' => $role,
-                'branch_id' => $branch->id,
-            ]);
-        }
 
         return response()->json([
             'status' => 'success',

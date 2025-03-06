@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Models\Main;
+namespace App\Models\Employee;
 
-use App\Models\Role;
-use App\Models\Employee\Employee;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Branch extends Model
+class Role extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [
         'id'
     ];
-    protected $attributes = [
-        'image' => 'branch-default.jpg'
+
+    protected $casts = [
+        'permissions' => 'array'
     ];
 
     public function employees()

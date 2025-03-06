@@ -94,10 +94,10 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         $data = $request->validate([
-            'nip' => 'required|string|max:20|unique:employees,nip',
+            'nip' => 'required|string|max:20|unique:employees,nip,' . $employee->id,
             'avatar' => 'nullable',
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required|email|unique:employees,email,' . $employee->id,
             'phone_number' => 'required|string|max:15',
             'position' => 'required|string|max:255',
             'pin' => 'required|string|max:6',

@@ -23,8 +23,7 @@ class BranchResource extends JsonResource
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'address' => $this->address,
-            'status' => $this->status,
-            'roles' => $this->roles ? RoleResource::collection($this->roles) : ''
+            'status' => $this->status
         ];
     }
 }

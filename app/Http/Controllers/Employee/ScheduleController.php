@@ -43,7 +43,7 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:50|unique:schedules,name',
+            'name' => 'required|string|max:50|unique:schedules,name,' . $schedule->id,
             'start_time' => 'required|date_format:H:i:s',
             'end_time' => 'required|date_format:H:i:s'
         ]);

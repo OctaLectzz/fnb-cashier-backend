@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone_number');
             $table->string('position');
-            $table->string('pin');
+            $table->string('pin')->default('123456');
             $table->unsignedBigInteger('branch_id');
+            $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('schedule_id');
 
             // Personal Data
@@ -50,6 +51,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('branch_id')->references('id')->on('branches')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('schedule_id')->references('id')->on('schedules')->onUpdate('cascade')->onDelete('cascade');
         });
     }

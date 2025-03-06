@@ -18,17 +18,16 @@ class HomeController extends Controller
         $totalTransactions = Transaction::count();
 
         // Calculate today's total transactions
-        $todayTotal = Transaction::whereDate('created_at', Carbon::today())
-            ->sum('payment_amount');
+        $todayTotal = Transaction::whereDate('created_at', Carbon::today())->sum('payment_amount');
 
         // Calculate today's products sold
-        $productsSold = TransactionDetail::whereDate('created_at', Carbon::today())
-            ->sum('quantity');
+        $productsSold = TransactionDetail::whereDate('created_at', Carbon::today())->sum('quantity');
+
+        // Calculate today's transactions
+        $transactionsToday = Transaction::whereDate('created_at', Carbon::today())->count();
 
         // Calculate this month's total transactions
-        $monthTotal = Transaction::whereMonth('created_at', Carbon::now()->month)
-            ->whereYear('created_at', Carbon::now()->year)
-            ->sum('payment_amount');
+        $monthTotal = Transaction::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->sum('payment_amount');
 
         // Statistics on total transactions per day for the last 1 month
         $transactionsPerDay = [];
@@ -43,9 +42,10 @@ class HomeController extends Controller
             'total_categories' => $totalCategories,
             'total_transactions' => $totalTransactions,
             'total_today' => $todayTotal,
+            'products_sold' => $productsSold,
+            'transactions_today' => $transactionsToday,
             'total_this_month' => $monthTotal,
-            'transactions_per_day' => $transactionsPerDay,
-            'products_sold' => $productsSold
+            'transactions_per_day' => $transactionsPerDay
         ]);
     }
 }
