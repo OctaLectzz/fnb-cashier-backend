@@ -13,6 +13,7 @@ class EmployeeSeeder extends Seeder
     public function run(): void
     {
         Employee::create([
+            'user_id' => 1,
             'nip' => '2024061006',
             'name' => 'Octavyan Putra Ramadhan',
             'email' => 'octalectzz@gmail.com',
@@ -39,6 +40,7 @@ class EmployeeSeeder extends Seeder
         ]);
 
         Employee::create([
+            'user_id' => 1,
             'nip' => '1234567890',
             'name' => 'John Doe',
             'email' => 'johndoe@example.com',
@@ -65,7 +67,8 @@ class EmployeeSeeder extends Seeder
         ]);
 
         Employee::create([
-            'nip' => '100002',
+            'user_id' => 1,
+            'nip' => '2024061002',
             'name' => 'Jane Smith',
             'email' => 'jane.smith@example.com',
             'phone_number' => '081234567892',
@@ -91,7 +94,8 @@ class EmployeeSeeder extends Seeder
         ]);
 
         Employee::create([
-            'nip' => '100004',
+            'user_id' => 1,
+            'nip' => '2024061009',
             'name' => 'Susan Williams',
             'email' => 'susan.williams@example.com',
             'phone_number' => '081234567894',
