@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::where('user_id', auth()->id())->latest()->get();
 
         return CategoryResource::collection($categories);
     }
@@ -23,6 +23,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:50',
             'description' => 'nullable'
         ]);
+        $data['user_id'] = auth()->id();
 
         // Slug
         $slug = Str::slug($data['name']);

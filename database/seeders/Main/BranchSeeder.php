@@ -14,6 +14,7 @@ class BranchSeeder extends Seeder
     public function run(): void
     {
         Branch::create([
+            'user_id' => 1,
             'branch_code' => strtoupper(Str::random(8)),
             'image' => 'IMG1722247571-wine-pos.jpg',
             'name' => 'Wine POS',
@@ -22,6 +23,7 @@ class BranchSeeder extends Seeder
         ]);
 
         Branch::create([
+            'user_id' => 1,
             'branch_code' => strtoupper(Str::random(8)),
             'image' => 'IMG1738662428-wine-pos-solo.jpg',
             'name' => 'Wine POS Solo',

@@ -11,7 +11,7 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $categories = Role::latest()->get();
+        $categories = Role::where('user_id', auth()->id())->latest()->get();
 
         return RoleResource::collection($categories);
     }
@@ -23,6 +23,7 @@ class RoleController extends Controller
             'permissions' => 'nullable|array',
             'permissions.*' => 'string'
         ]);
+        $data['user_id'] = auth()->id();
 
         $role = Role::create($data);
 

@@ -3,6 +3,7 @@
 namespace App\Models\Main;
 
 use App\Models\Role;
+use App\Models\User;
 use App\Models\Employee\Employee;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,10 @@ class Branch extends Model
         'image' => 'branch-default.jpg'
     ];
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public function employees()
     {
         return $this->hasMany(Employee::class);

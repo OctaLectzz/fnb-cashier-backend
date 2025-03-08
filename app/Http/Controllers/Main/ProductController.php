@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::where('user_id', auth()->id())->latest()->get();
 
         return ProductResource::collection($products);
     }
@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'image' => 'nullable',
-            'sku' => 'required|string|max:10|unique:products,sku',
+            'sku' => 'required|string|max:10',
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'min_purchase' => 'nullable|integer',
@@ -34,6 +34,7 @@ class ProductController extends Controller
             'height' => 'nullable|numeric',
             'status' => 'required|boolean'
         ]);
+        $data['user_id'] = auth()->id();
         $data['min_purchase'] = $data['min_purchase'] ?? 1;
 
         // Slug
@@ -67,9 +68,9 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'image' => 'nullable',
+            'sku' => 'required|string|max:10',
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'sku' => 'required|string|max:10|unique:products,sku,' . $product->id,
             'min_purchase' => 'nullable|integer',
             'selling_price' => 'nullable',
             'purchase_price' => 'required',

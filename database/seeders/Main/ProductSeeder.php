@@ -13,6 +13,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
+            'user_id' => 1,
             'sku' => 'STK001',
             'image' => 'IMG1738682711-chicken-steak-hot-plate.jpg',
             'slug' => 'chicken-steak-hot-plate',
@@ -29,6 +30,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'user_id' => 1,
             'sku' => 'CK009',
             'image' => 'IMG1738684528-chicken-katsu.jpg',
             'slug' => 'chicken-katsu',
@@ -46,6 +48,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
+            'user_id' => 1,
             'sku' => 'ESP001',
             'slug' => 'espresso-coffee',
             'name' => 'Espresso Coffee',
@@ -61,6 +64,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'user_id' => 1,
             'sku' => 'CAP002',
             'slug' => 'cappuccino',
             'name' => 'Cappuccino',
@@ -76,6 +80,7 @@ class ProductSeeder extends Seeder
             'status' => 0
         ]);
         Product::create([
+            'user_id' => 1,
             'sku' => 'CHK003',
             'slug' => 'chocolate-cake',
             'name' => 'Chocolate Cake',
@@ -92,6 +97,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
+            'user_id' => 1,
             'sku' => 'NSG001',
             'slug' => 'nasi-goreng-spesial',
             'name' => 'Nasi Goreng Spesial',
@@ -107,6 +113,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'user_id' => 1,
             'sku' => 'AYG002',
             'slug' => 'ayam-geprek',
             'name' => 'Ayam Geprek',
@@ -122,6 +129,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'user_id' => 1,
             'sku' => 'MGJ003',
             'slug' => 'mie-goreng-jawa',
             'name' => 'Mie Goreng Jawa',

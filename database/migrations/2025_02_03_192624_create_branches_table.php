@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('branch_code')->unique();
             $table->string('image')->nullable();
             $table->string('name');
@@ -22,6 +23,8 @@ return new class extends Migration
             $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

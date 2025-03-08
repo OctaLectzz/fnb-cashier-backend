@@ -12,7 +12,7 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $branches = Branch::oldest()->get();
+        $branches = Branch::where('user_id', auth()->id())->oldest()->get();
 
         return BranchResource::collection($branches);
     }
@@ -27,6 +27,7 @@ class BranchController extends Controller
             'address' => 'nullable',
             'status' => 'required|boolean'
         ]);
+        $data['user_id'] = auth()->id();
 
         // Branch Code
         do {

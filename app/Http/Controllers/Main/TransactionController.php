@@ -13,7 +13,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::latest()->get();
+        $transactions = Transaction::where('user_id', auth()->id())->latest()->get();
 
         return TransactionResource::collection($transactions);
     }
@@ -34,6 +34,7 @@ class TransactionController extends Controller
             'transactiondetails.*.total_price' => 'required|numeric|min:0',
             'transactiondetails.*.quantity' => 'required|integer|min:1'
         ]);
+        $data['user_id'] = auth()->id();
         $data['invoice'] = 'WINE' . now()->format('YmdHis') . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
 
         DB::beginTransaction();

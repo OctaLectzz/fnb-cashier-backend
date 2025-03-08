@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('invoice')->unique();
             $table->string('name')->nullable();
             $table->enum('payment_type', ['cash', 'qris', 'others']);
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create('transaction_details', function (Blueprint $table) {

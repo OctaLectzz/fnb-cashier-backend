@@ -11,7 +11,7 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = Schedule::latest()->get();
+        $schedules = Schedule::where('user_id', auth()->id())->latest()->get();
 
         return ScheduleResource::collection($schedules);
     }
@@ -19,10 +19,11 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:50|unique:schedules,name',
+            'name' => 'required|string|max:50',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i'
         ]);
+        $data['user_id'] = auth()->id();
 
         $schedule = Schedule::create($data);
 
@@ -43,7 +44,7 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:50|unique:schedules,name,' . $schedule->id,
+            'name' => 'required|string|max:50',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i'
         ]);

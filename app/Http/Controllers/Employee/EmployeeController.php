@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::latest()->get();
+        $employees = Employee::where('user_id', auth()->id())->latest()->get();
 
         return EmployeeResource::collection($employees);
     }
@@ -19,10 +19,10 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nip' => 'required|string|max:20|unique:employees,nip',
+            'nip' => 'required|string|max:20',
             'avatar' => 'nullable',
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required|email',
             'phone_number' => 'required|string|max:15',
             'position' => 'required|string|max:255',
             'pin' => 'required|string|max:6',
@@ -46,6 +46,7 @@ class EmployeeController extends Controller
             'account_holder_name' => 'nullable|string|max:255',
             'status' => 'nullable|boolean'
         ]);
+        $data['user_id'] = auth()->id();
 
         // Avatar
         if ($request->hasFile('avatar')) {
@@ -94,10 +95,10 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         $data = $request->validate([
-            'nip' => 'required|string|max:20|unique:employees,nip,' . $employee->id,
+            'nip' => 'required|string|max:20',
             'avatar' => 'nullable',
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email,' . $employee->id,
+            'email' => 'required|email',
             'phone_number' => 'required|string|max:15',
             'position' => 'required|string|max:255',
             'pin' => 'required|string|max:6',

@@ -13,6 +13,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         Role::create([
+            'user_id' => 1,
             'name' => 'admin',
             'permissions' => ['view users', 'create users', 'edit users', 'delete users',
                               'view branches', 'create branches', 'edit branches', 'delete branches',
@@ -24,6 +25,7 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::create([
+            'user_id' => 1,
             'name' => 'cashier',
             'permissions' => ['view products', 'create products', 'edit products', 'delete products',
                               'view transactions', 'create transactions', 'edit transactions', 'delete transactions']

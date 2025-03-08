@@ -3,6 +3,7 @@
 namespace App\Models\Employee;
 
 use App\Models\Main\Branch;
+use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,6 +23,10 @@ class Employee extends Model
         'bpjs_health_card' => 'bpjshealth-default.jpg'
     ];
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public function branch()
     {
         return $this->belongsTo(Branch::class);

@@ -25,6 +25,7 @@ class TransactionSeeder extends Seeder
             $payment_type = ['cash', 'qris', 'others'][rand(0, 2)];
 
             $transaction = Transaction::create([
+                'user_id' => 1,
                 'invoice' => $invoice,
                 'name' => 'Customer ' . $i,
                 'payment_type' => $payment_type,
