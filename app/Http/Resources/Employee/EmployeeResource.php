@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Employee;
 
+use App\Http\Resources\Main\BranchResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,6 +23,7 @@ class EmployeeResource extends JsonResource
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'position' => $this->position,
+            'role_id' => $this->role_id,
             'pin' => $this->pin,
             'branch_id' => $this->branch_id,
             'schedule_id' => $this->schedule_id,
@@ -32,7 +34,8 @@ class EmployeeResource extends JsonResource
             'domicile' => $this->domicile,
             'address' => $this->address,
             'employment_status' => $this->employment_status,
-            'date_joined' => $this->date_joined,
+            'date_joined' => \Carbon\Carbon::parse($this->date_joined)->format('d F Y'),
+            'date_joined_edit' => $this->date_joined,
             'end_date' => $this->end_date,
             'bpjs_tk_number' => $this->bpjs_tk_number,
             'bpjs_tk_card' => $this->bpjs_tk_card,
@@ -41,7 +44,10 @@ class EmployeeResource extends JsonResource
             'bank_name' => $this->bank_name,
             'bank_account_number' => $this->bank_account_number,
             'account_holder_name' => $this->account_holder_name,
-            'status' => $this->status,
+            'status' => $this->status === 1 ? true : false,
+            'role' => new RoleResource($this->role),
+            'branch' => new BranchResource($this->branch),
+            'schedule' => new ScheduleResource($this->schedule),
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
         ];

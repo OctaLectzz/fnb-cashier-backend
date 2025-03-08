@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('position');
+            $table->unsignedBigInteger('role_id');
             $table->string('pin')->default('123456');
             $table->unsignedBigInteger('branch_id');
-            $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('schedule_id');
 
             // Personal Data

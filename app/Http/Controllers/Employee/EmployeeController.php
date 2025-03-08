@@ -21,14 +21,15 @@ class EmployeeController extends Controller
         $data = $request->validate([
             'nip' => 'required|string|max:20',
             'avatar' => 'nullable',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
             'email' => 'required|email',
-            'phone_number' => 'required|string|max:15',
+            'phone_number' => 'required|string|max:20',
             'position' => 'required|string|max:255',
+            'role_id' => 'required|exists:roles,id',
             'pin' => 'required|string|max:6',
             'branch_id' => 'required|exists:branches,id',
             'schedule_id' => 'required|exists:schedules,id',
-            'ktp' => 'nullable|string|max:16',
+            'ktp' => 'nullable|string|max:25',
             'ktp_image' => 'nullable',
             'dob' => 'nullable|date',
             'gender' => 'nullable|string|max:255',
@@ -72,7 +73,7 @@ class EmployeeController extends Controller
         // BPJS Health
         if ($request->hasFile('bpjs_health_card')) {
             $npwpImageName = time() . '-' . $data['nip'] . '.' . $request->bpjs_health_card->getClientOriginalExtension();
-            $request->bpjs_health_card->move(public_path('employees/bpjshealths'), $npwpImageName);
+            $request->bpjs_health_card->move(public_path('employees/bpjshealthes'), $npwpImageName);
             $data['bpjs_health_card'] = $npwpImageName;
         }
 
@@ -97,14 +98,15 @@ class EmployeeController extends Controller
         $data = $request->validate([
             'nip' => 'required|string|max:20',
             'avatar' => 'nullable',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
             'email' => 'required|email',
-            'phone_number' => 'required|string|max:15',
+            'phone_number' => 'required|string|max:20',
             'position' => 'required|string|max:255',
+            'role_id' => 'required|exists:roles,id',
             'pin' => 'required|string|max:6',
             'branch_id' => 'required|exists:branches,id',
             'schedule_id' => 'required|exists:schedules,id',
-            'ktp' => 'nullable|string|max:16',
+            'ktp' => 'nullable|string|max:25',
             'ktp_image' => 'nullable',
             'dob' => 'nullable|date',
             'gender' => 'nullable|string|max:255',
@@ -147,7 +149,7 @@ class EmployeeController extends Controller
         // BPJS Health
         if ($request->hasFile('bpjs_health_card')) {
             $npwpImageName = time() . '-' . $data['nip'] . '.' . $request->bpjs_health_card->getClientOriginalExtension();
-            $request->bpjs_health_card->move(public_path('employees/bpjshealths'), $npwpImageName);
+            $request->bpjs_health_card->move(public_path('employees/bpjshealthes'), $npwpImageName);
             $data['bpjs_health_card'] = $npwpImageName;
         }
 
