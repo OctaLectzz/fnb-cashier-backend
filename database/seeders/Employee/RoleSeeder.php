@@ -20,8 +20,8 @@ class RoleSeeder extends Seeder
                               'view categories', 'create categories', 'edit categories', 'delete categories',
                               'view products', 'create products', 'edit products', 'delete products',
                               'view transactions', 'create transactions', 'edit transactions', 'delete transactions',
-                              'view schedule', 'create schedule', 'edit schedule', 'delete schedule',
-                              'view employee', 'create employee', 'edit employee', 'delete employee']
+                              'view schedules', 'create schedules', 'edit schedules', 'delete schedules',
+                              'view employees', 'create employees', 'edit employees', 'delete employees']
         ]);
 
         Role::create([
