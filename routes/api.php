@@ -57,7 +57,6 @@ Route::prefix('setting')->controller(App\Http\Controllers\SettingController::cla
 
 
 
-
 // ----------------------------------------------------------  MAIN  ---------------------------------------------------------- //
 
 // ----HOME---- //
