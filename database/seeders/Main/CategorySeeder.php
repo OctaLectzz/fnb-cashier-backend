@@ -13,6 +13,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'slug' => 'makanan',
             'name' => 'Makanan',
@@ -20,6 +21,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'slug' => 'minuman',
             'name' => 'Minuman',
@@ -27,10 +29,19 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'slug' => 'lainnya',
             'name' => 'Lainnya',
             'description' => 'Makanan pencuci mulut seperti cake, pudding, dan es krim.'
+        ]);
+
+        Category::create([
+            'branch_id' => 2,
+            'user_id' => 1,
+            'slug' => 'makanan-s9d',
+            'name' => 'Makanan',
+            'description' => ''
         ]);
     }
 }

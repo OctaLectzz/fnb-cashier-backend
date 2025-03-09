@@ -74,6 +74,7 @@ Route::prefix('branch')->controller(App\Http\Controllers\Main\BranchController::
 // ----CATEGORY---- //
 Route::prefix('category')->controller(App\Http\Controllers\Main\CategoryController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
+    Route::get('/branch/{branch}', 'branch');
     Route::get('/{category}', 'show');
     Route::post('/', 'store');
     Route::put('/{category}', 'update');
@@ -83,6 +84,7 @@ Route::prefix('category')->controller(App\Http\Controllers\Main\CategoryControll
 // ----PRODUCT---- //
 Route::prefix('product')->controller(App\Http\Controllers\Main\ProductController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
+    Route::get('/branch/{branch}', 'branch');
     Route::get('/{product}', 'show');
     Route::post('/', 'store');
     Route::post('/{product}', 'update');
@@ -92,6 +94,7 @@ Route::prefix('product')->controller(App\Http\Controllers\Main\ProductController
 // ----TRANSACTION---- //
 Route::prefix('transaction')->controller(App\Http\Controllers\Main\TransactionController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
+    Route::get('/branch/{branch}', 'branch');
     Route::get('/{transaction}', 'show');
     Route::post('/', 'store');
     Route::put('/{transaction}', 'update');
@@ -126,6 +129,7 @@ Route::prefix('schedule')->controller(App\Http\Controllers\Employee\ScheduleCont
 // ----EMPLOYEE---- //
 Route::prefix('employee')->controller(App\Http\Controllers\Employee\EmployeeController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
+    Route::get('/profile', 'profile');
     Route::get('/{employee}', 'show');
     Route::post('/', 'store');
     Route::post('/{employee}', 'update');

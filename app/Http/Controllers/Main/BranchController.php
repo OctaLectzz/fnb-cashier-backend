@@ -21,9 +21,9 @@ class BranchController extends Controller
     {
         $data = $request->validate([
             'image' => 'nullable',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:30',
             'email' => 'nullable|email|max:255',
-            'phone_number' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|string|max:20',
             'address' => 'nullable',
             'status' => 'required|boolean'
         ]);
@@ -62,9 +62,9 @@ class BranchController extends Controller
     {
         $data = $request->validate([
             'image' => 'nullable',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:30',
             'email' => 'nullable|email|max:255',
-            'phone_number' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|string|max:20',
             'address' => 'nullable',
             'status' => 'required|boolean'
         ]);

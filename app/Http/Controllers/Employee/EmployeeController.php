@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee;
 use Illuminate\Http\Request;
 use App\Models\Employee\Employee;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Employee\EmployeeResource;
 
 class EmployeeController extends Controller
@@ -14,6 +15,15 @@ class EmployeeController extends Controller
         $employees = Employee::where('user_id', auth()->id())->latest()->get();
 
         return EmployeeResource::collection($employees);
+    }
+
+    public function profile()
+    {
+        $employee = Auth::guard('employee')->user();;
+
+        return response()->json([
+            'data' => new EmployeeResource($employee)
+        ]);
     }
 
     public function store(Request $request)

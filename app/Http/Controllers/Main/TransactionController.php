@@ -8,6 +8,7 @@ use App\Models\Main\TransactionDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Main\TransactionResource;
+use App\Models\Main\Branch;
 
 class TransactionController extends Controller
 {
@@ -18,9 +19,17 @@ class TransactionController extends Controller
         return TransactionResource::collection($transactions);
     }
 
+    public function branch(Branch $branch)
+    {
+        $transactions = Transaction::where('branch_id', $branch->id)->latest()->get();
+
+        return TransactionResource::collection($transactions);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
+            'branch_id' => 'required|exists:branches,id',
             'name' => 'nullable|string|max:255',
             'payment_type' => 'required|string',
             'total_price' => 'required|numeric|min:0',

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Main\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Main\CategoryResource;
+use App\Models\Main\Branch;
 
 class CategoryController extends Controller
 {
@@ -17,9 +18,17 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
+    public function branch(Branch $branch)
+    {
+        $categories = Category::where('branch_id', $branch->id)->latest()->get();
+
+        return CategoryResource::collection($categories);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
+            'branch_id' => 'required|exists:branches,id',
             'name' => 'required|string|max:50',
             'description' => 'nullable'
         ]);

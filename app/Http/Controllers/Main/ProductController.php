@@ -7,6 +7,7 @@ use App\Models\Main\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Main\ProductResource;
+use App\Models\Main\Branch;
 
 class ProductController extends Controller
 {
@@ -17,9 +18,17 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function branch(Branch $branch)
+    {
+        $products = Product::where('branch_id', $branch->id)->latest()->get();
+
+        return ProductResource::collection($products);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
+            'branch_id' => 'required|exists:branches,id',
             'image' => 'nullable',
             'sku' => 'required|string|max:10',
             'name' => 'required|string|max:255',

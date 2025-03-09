@@ -19,7 +19,8 @@ class BranchSeeder extends Seeder
             'image' => 'IMG1722247571-wine-pos.jpg',
             'name' => 'Wine POS',
             'email' => 'winepos@gmail.com',
-            'phone_number' => '0896 - 9022 - 0404'
+            'phone_number' => '0896 - 9022 - 0404',
+            'address' => 'Jl. Seta No.32, Larangan RT04/RW04 Gayam Sukoharjo, Jawa Tengah'
         ]);
 
         Branch::create([
@@ -29,8 +30,7 @@ class BranchSeeder extends Seeder
             'name' => 'Wine POS Solo',
             'email' => 'winepossolo@gmail.com',
             'phone_number' => '0895 - 6052 - 10002',
-            'address' => 'Jl. Slamet Riyadi, No. 108, Laweyan, Surakarta',
-            'status' => 0
+            'address' => 'Jl. Slamet Riyadi No.14, Laweyan RT03/RW02 Surakarta, Jawa Tengah'
         ]);
     }
 }

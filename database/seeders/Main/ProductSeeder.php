@@ -13,6 +13,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'STK001',
             'image' => 'IMG1738682711-chicken-steak-hot-plate.jpg',
@@ -30,6 +31,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'CK009',
             'image' => 'IMG1738684528-chicken-katsu.jpg',
@@ -48,6 +50,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'ESP001',
             'slug' => 'espresso-coffee',
@@ -64,6 +67,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'CAP002',
             'slug' => 'cappuccino',
@@ -80,6 +84,7 @@ class ProductSeeder extends Seeder
             'status' => 0
         ]);
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'CHK003',
             'slug' => 'chocolate-cake',
@@ -97,6 +102,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'NSG001',
             'slug' => 'nasi-goreng-spesial',
@@ -113,6 +119,7 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'AYG002',
             'slug' => 'ayam-geprek',
@@ -129,11 +136,48 @@ class ProductSeeder extends Seeder
             'status' => 1
         ]);
         Product::create([
+            'branch_id' => 1,
             'user_id' => 1,
             'sku' => 'MGJ003',
             'slug' => 'mie-goreng-jawa',
             'name' => 'Mie Goreng Jawa',
             'category_id' => 1,
+            'min_purchase' => 1,
+            'selling_price' => 38000,
+            'purchase_price' => 22000,
+            'unit' => 'porsi',
+            'weight' => 0.45,
+            'length' => null,
+            'width' => null,
+            'height' => null,
+            'status' => 0
+        ]);
+
+        Product::create([
+            'branch_id' => 2,
+            'user_id' => 1,
+            'sku' => 'STK001',
+            'image' => 'IMG1738682711-chicken-steak-hot-plate.jpg',
+            'slug' => 'chicken-steak-hot-plate-s8d',
+            'name' => 'Chicken Steak Hot Plate',
+            'category_id' => 4,
+            'min_purchase' => 1,
+            'selling_price' => 16000,
+            'purchase_price' => 21000,
+            'unit' => 'porsi',
+            'weight' => 0.85,
+            'length' => null,
+            'width' => null,
+            'height' => null,
+            'status' => 1
+        ]);
+        Product::create([
+            'branch_id' => 2,
+            'user_id' => 1,
+            'sku' => 'MGJ003',
+            'slug' => 'mie-goreng-jawa-kd9',
+            'name' => 'Mie Goreng Jawa',
+            'category_id' => 4,
             'min_purchase' => 1,
             'selling_price' => 38000,
             'purchase_price' => 22000,
