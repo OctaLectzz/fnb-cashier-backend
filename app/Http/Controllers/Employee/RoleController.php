@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Employee;
 use Illuminate\Http\Request;
 use App\Models\Employee\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Employee\RoleResource;
 
 class RoleController extends Controller
 {
     public function index()
     {
-        $categories = Role::where('user_id', auth()->id())->latest()->get();
+        $categories = Role::where('user_id', Auth::id())->latest()->get();
 
         return RoleResource::collection($categories);
     }
@@ -23,7 +24,7 @@ class RoleController extends Controller
             'permissions' => 'nullable|array',
             'permissions.*' => 'string'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
 
         $role = Role::create($data);
 

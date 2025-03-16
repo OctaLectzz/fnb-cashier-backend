@@ -7,13 +7,14 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
         return response()->json([
             'data' => new UserResource($user)
@@ -25,7 +26,7 @@ class ProfileController extends Controller
         $data = $request->validate([
             'avatar' => 'nullable',
             'name' => 'required|string|max:50',
-            'email' => 'required|email|unique:users,email,' . auth()->id(),
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
             'phone_number' => 'nullable|string|max:15',
             'ktp' => 'nullable|string|max:16',
             'ktp_image' => 'nullable',
@@ -54,7 +55,7 @@ class ProfileController extends Controller
             $data['npwp_image'] = $npwpImageName;
         }
 
-        $user = User::find(auth()->id());
+        $user = User::find(Auth::id());
         $user->update($data);
 
         return response()->json([
@@ -72,7 +73,7 @@ class ProfileController extends Controller
             'confirm_password' => 'required|same:new_password'
         ]);
 
-        $user = User::findOrFail(auth()->id());
+        $user = User::findOrFail(Auth::id());
 
         if (!Hash::check($request->current_password, $user->password)) {
             return response()->json([

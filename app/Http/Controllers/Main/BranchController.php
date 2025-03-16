@@ -6,13 +6,14 @@ use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Main\BranchResource;
 
 class BranchController extends Controller
 {
     public function index()
     {
-        $branches = Branch::where('user_id', auth()->id())->oldest()->get();
+        $branches = Branch::where('user_id', Auth::id())->oldest()->get();
 
         return BranchResource::collection($branches);
     }
@@ -27,7 +28,7 @@ class BranchController extends Controller
             'address' => 'nullable',
             'status' => 'required|boolean'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
 
         // Branch Code
         do {

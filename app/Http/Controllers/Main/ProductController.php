@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use App\Models\Main\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Main\ProductResource;
-use App\Models\Main\Branch;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('user_id', auth()->id())->latest()->get();
+        $products = Product::where('user_id', Auth::id())->latest()->get();
 
         return ProductResource::collection($products);
     }
@@ -43,7 +44,7 @@ class ProductController extends Controller
             'height' => 'nullable|numeric',
             'status' => 'required|boolean'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
         $data['min_purchase'] = $data['min_purchase'] ?? 1;
 
         // Slug

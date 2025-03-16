@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Employee;
 use Illuminate\Http\Request;
 use App\Models\Employee\Schedule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Employee\ScheduleResource;
 
 class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = Schedule::where('user_id', auth()->id())->latest()->get();
+        $schedules = Schedule::where('user_id', Auth::id())->latest()->get();
 
         return ScheduleResource::collection($schedules);
     }
@@ -23,7 +24,7 @@ class ScheduleController extends Controller
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
 
         $schedule = Schedule::create($data);
 

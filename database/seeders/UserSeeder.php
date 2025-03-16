@@ -12,7 +12,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Owner
         User::create([
             'avatar' => 'user-profile-default.jpg',
             'name' => 'Wine POS',

@@ -2,31 +2,24 @@
 
 namespace App\Models\Employee;
 
-use App\Models\Main\Branch;
 use App\Models\User;
+use App\Models\Main\Branch;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Employee extends Authenticatable
 {
-    use HasApiTokens, HasFactory, SoftDeletes;
+    use HasApiTokens, SoftDeletes;
 
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
     protected $attributes = [
-        'avatar' => 'employee-profile-default.jpg',
-        'ktp_image' => 'ktp-default.jpg',
-        'bpjs_tk_card' => 'bpjstk-default.jpg',
-        'bpjs_health_card' => 'bpjshealth-default.jpg'
+        'avatar' => 'employee-profile-default.jpg'
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
     public function branch()
     {

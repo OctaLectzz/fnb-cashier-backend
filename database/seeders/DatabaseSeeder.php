@@ -4,12 +4,12 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\Main\BranchSeeder;
+use Database\Seeders\Main\ProductSeeder;
 use Database\Seeders\Employee\RoleSeeder;
 use Database\Seeders\Main\CategorySeeder;
-use Database\Seeders\Main\ProductSeeder;
 use Database\Seeders\Main\TransactionSeeder;
-use Database\Seeders\Employee\ScheduleSeeder;
 use Database\Seeders\Employee\EmployeeSeeder;
+use Database\Seeders\Employee\ScheduleSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            SettingSeeder::class,
             BranchSeeder::class,
-            RoleSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             TransactionSeeder::class,
+            RoleSeeder::class,
             ScheduleSeeder::class,
-            EmployeeSeeder::class,
-            SettingSeeder::class
+            EmployeeSeeder::class
         ]);
     }
 }

@@ -37,8 +37,7 @@ class TransactionResource extends JsonResource
                     'product_name' => $transactiondetail->product->name ?? null,
                     'product_price' => $transactiondetail->product->purchase_price ?? null,
                     'total_price' => $transactiondetail->total_price,
-                    'quantity' => $transactiondetail->quantity,
-                    'created_at' => $transactiondetail->created_at->format('Y-m-d H:i:s')
+                    'quantity' => $transactiondetail->quantity
                 ];
             })
         ];

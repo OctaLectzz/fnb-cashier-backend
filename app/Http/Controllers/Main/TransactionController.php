@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\Models\Main\Branch;
 use Illuminate\Http\Request;
 use App\Models\Main\Transaction;
-use App\Models\Main\TransactionDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Main\TransactionDetail;
 use App\Http\Resources\Main\TransactionResource;
-use App\Models\Main\Branch;
 
 class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::where('user_id', auth()->id())->latest()->get();
+        $transactions = Transaction::where('user_id', Auth::id())->latest()->get();
 
         return TransactionResource::collection($transactions);
     }
@@ -43,7 +44,7 @@ class TransactionController extends Controller
             'transactiondetails.*.total_price' => 'required|numeric|min:0',
             'transactiondetails.*.quantity' => 'required|integer|min:1'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
         $data['invoice'] = 'WINE' . now()->format('YmdHis') . str_pad(Transaction::max('id') + 1, 5, '0', STR_PAD_LEFT);
 
         DB::beginTransaction();

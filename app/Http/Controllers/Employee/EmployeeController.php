@@ -12,7 +12,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::where('user_id', auth()->id())->latest()->get();
+        $employees = Employee::where('user_id', Auth::id())->latest()->get();
 
         return EmployeeResource::collection($employees);
     }
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
             'account_holder_name' => 'nullable|string|max:255',
             'status' => 'nullable|boolean'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
 
         // Avatar
         if ($request->hasFile('avatar')) {

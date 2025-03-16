@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\Models\Main\Branch;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Main\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Main\CategoryResource;
-use App\Models\Main\Branch;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('user_id', auth()->id())->latest()->get();
+        $categories = Category::where('user_id', Auth::id())->latest()->get();
 
         return CategoryResource::collection($categories);
     }
@@ -32,7 +33,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:50',
             'description' => 'nullable'
         ]);
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
 
         // Slug
         $slug = Str::slug($data['name']);
