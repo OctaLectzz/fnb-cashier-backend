@@ -20,6 +20,7 @@ class RoleSeeder extends Seeder
                               'view categories', 'create categories', 'edit categories', 'delete categories',
                               'view products', 'create products', 'edit products', 'delete products',
                               'view transactions', 'create transactions', 'edit transactions', 'delete transactions',
+                              'view roles', 'create roles', 'edit roles', 'delete roles',
                               'view schedules', 'create schedules', 'edit schedules', 'delete schedules',
                               'view employees', 'create employees', 'edit employees', 'delete employees']
         ]);
