@@ -21,6 +21,7 @@ Route::prefix('auth')->controller(App\Http\Controllers\User\AuthController::clas
 // ----PROFILE---- //
 Route::prefix('profile')->controller(App\Http\Controllers\User\ProfileController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'profile');
+    Route::get('/employee', 'employee');
     Route::post('/', 'editprofile');
     Route::post('/change-password', 'changepassword');
 });
@@ -118,7 +119,6 @@ Route::prefix('schedule')->controller(App\Http\Controllers\Employee\ScheduleCont
 // ----EMPLOYEE---- //
 Route::prefix('employee')->controller(App\Http\Controllers\Employee\EmployeeController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
-    Route::get('/profile', 'profile');
     Route::get('/{employee}', 'show');
     Route::post('/', 'store');
     Route::post('/{employee}', 'update');

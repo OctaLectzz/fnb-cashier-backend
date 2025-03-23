@@ -17,15 +17,6 @@ class EmployeeController extends Controller
         return EmployeeResource::collection($employees);
     }
 
-    public function profile()
-    {
-        $employee = Auth::guard('employee')->user();;
-
-        return response()->json([
-            'data' => new EmployeeResource($employee)
-        ]);
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([

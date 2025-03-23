@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\Employee\EmployeeResource;
 
 class ProfileController extends Controller
 {
@@ -18,6 +19,15 @@ class ProfileController extends Controller
 
         return response()->json([
             'data' => new UserResource($user)
+        ]);
+    }
+
+    public function employee()
+    {
+        $employee = Auth::guard('employee')->user();;
+
+        return response()->json([
+            'data' => new EmployeeResource($employee)
         ]);
     }
 

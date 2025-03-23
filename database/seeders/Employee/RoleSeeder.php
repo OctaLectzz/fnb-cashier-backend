@@ -14,11 +14,14 @@ class RoleSeeder extends Seeder
     {
         Role::create([
             'user_id' => 1,
-            'name' => 'admin',
-            'permissions' => ['view users', 'create users', 'edit users', 'delete users',
+            'name' => 'superadmin',
+            'permissions' => ['home attendance', 'home cashier', 'home sales', 'home report',
+                              'change branches', 'dashboard main', 'dashboard employee', 'dashboard inventory', 'dashboard accounting',
+                              'view users', 'create users', 'edit users', 'delete users',
                               'view branches', 'create branches', 'edit branches', 'delete branches',
                               'view categories', 'create categories', 'edit categories', 'delete categories',
                               'view products', 'create products', 'edit products', 'delete products',
+                              'view cashier',
                               'view transactions', 'create transactions', 'edit transactions', 'delete transactions',
                               'view roles', 'create roles', 'edit roles', 'delete roles',
                               'view schedules', 'create schedules', 'edit schedules', 'delete schedules',
@@ -28,8 +31,12 @@ class RoleSeeder extends Seeder
         Role::create([
             'user_id' => 1,
             'name' => 'cashier',
-            'permissions' => ['view products', 'create products', 'edit products', 'delete products',
-                              'view transactions', 'create transactions', 'edit transactions', 'delete transactions']
+            'permissions' => ['home attendance', 'home cashier', 'home sales', 'home report',
+                              'dashboard main',
+                              'view categories',
+                              'view products',
+                              'view cashier',
+                              'view transactions', 'create transactions', 'edit transactions']
         ]);
     }
 }
