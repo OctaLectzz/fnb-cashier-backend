@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('branch_code')->unique();
             $table->string('image')->nullable();
-            $table->string('name');
+            $table->string('name', 30);
             $table->string('email')->nullable();
-            $table->string('phone_number')->nullable();
+            $table->string('phone_number', 20)->nullable();
             $table->text('address')->nullable();
             $table->boolean('status')->default(1);
             $table->softDeletes();

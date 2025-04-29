@@ -17,13 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('branch_id');
             $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->string('sku');
+            $table->string('sku', 10);
             $table->string('name');
             $table->unsignedBigInteger('category_id');
             $table->integer('min_purchase')->default(1);
             $table->double('selling_price')->nullable();
             $table->double('purchase_price');
-            $table->string('unit');
+            $table->string('unit', 50);
             $table->integer('weight')->nullable();
             $table->integer('length')->nullable();
             $table->integer('width')->nullable();

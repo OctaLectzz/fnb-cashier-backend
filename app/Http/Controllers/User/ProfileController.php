@@ -37,7 +37,7 @@ class ProfileController extends Controller
             'avatar' => 'nullable',
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
-            'phone_number' => 'nullable|string|max:15',
+            'phone_number' => 'nullable|string|max:20',
             'ktp' => 'nullable|string|max:16',
             'ktp_image' => 'nullable',
             'npwp' => 'nullable|string|max:30',

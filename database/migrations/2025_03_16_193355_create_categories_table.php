@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('branch_id');
             $table->string('slug')->unique();
-            $table->string('name');
+            $table->string('name', 50);
             $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -14,19 +14,19 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nip');
+            $table->string('nip', 20);
             $table->string('avatar');
-            $table->string('name');
+            $table->string('name', 50);
             $table->string('email');
-            $table->string('phone_number');
+            $table->string('phone_number', 20);
             $table->string('position');
             $table->unsignedBigInteger('role_id');
-            $table->string('pin')->default('123456');
+            $table->string('pin', 6)->default('123456');
             $table->unsignedBigInteger('branch_id');
             $table->unsignedBigInteger('schedule_id');
 
             // Personal Data
-            $table->string('ktp')->nullable();
+            $table->string('ktp', 25)->nullable();
             $table->string('ktp_image')->nullable();
             $table->date('dob')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
