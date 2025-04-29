@@ -27,6 +27,8 @@ class EmployeeResource extends JsonResource
             'pin' => $this->pin,
             'branch_id' => $this->branch_id,
             'schedule_id' => $this->schedule_id,
+
+            // Personal Data
             'ktp' => $this->ktp,
             'ktp_image' => $this->ktp_image,
             'dob' => $this->dob,
@@ -37,13 +39,18 @@ class EmployeeResource extends JsonResource
             'date_joined' => \Carbon\Carbon::parse($this->date_joined)->format('d F Y'),
             'date_joined_edit' => $this->date_joined,
             'end_date' => $this->end_date,
+
+            // BPJS Information
             'bpjs_tk_number' => $this->bpjs_tk_number,
             'bpjs_tk_card' => $this->bpjs_tk_card,
             'bpjs_health_number' => $this->bpjs_health_number,
             'bpjs_health_card' => $this->bpjs_health_card,
+
+            // Bank Information
             'bank_name' => $this->bank_name,
             'bank_account_number' => $this->bank_account_number,
             'account_holder_name' => $this->account_holder_name,
+
             'status' => $this->status === 1 ? true : false,
             'role' => new RoleResource($this->role),
             'branch' => new BranchResource($this->branch),
