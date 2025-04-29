@@ -119,10 +119,21 @@ Route::prefix('schedule')->controller(App\Http\Controllers\Employee\ScheduleCont
 // ----EMPLOYEE---- //
 Route::prefix('employee')->controller(App\Http\Controllers\Employee\EmployeeController::class)->middleware('auth:sanctum')->group(function () {
     Route::get('/', 'index');
+    Route::get('/branch/{branch}', 'branch');
     Route::get('/{employee}', 'show');
     Route::post('/', 'store');
     Route::post('/{employee}', 'update');
     Route::delete('/{employee}', 'destroy');
+});
+
+// ----ATTENDANCE---- //
+Route::prefix('attendance')->controller(App\Http\Controllers\Employee\AttendanceController::class)->middleware('auth:sanctum')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/branch/{branch}', 'branch');
+    Route::get('/{attendance}', 'show');
+    Route::post('/', 'store');
+    Route::post('/{attendance}', 'update');
+    Route::delete('/{attendance}', 'destroy');
 });
 
 // ----------------------------------------------------------  EMPLOYEE  ---------------------------------------------------------- //

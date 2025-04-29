@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Models\Main\Branch;
 use Illuminate\Http\Request;
 use App\Models\Employee\Employee;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,13 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::where('user_id', Auth::id())->latest()->get();
+
+        return EmployeeResource::collection($employees);
+    }
+
+    public function branch(Branch $branch)
+    {
+        $employees = Employee::where('branch_id', $branch->id)->latest()->get();
 
         return EmployeeResource::collection($employees);
     }
