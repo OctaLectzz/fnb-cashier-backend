@@ -30,7 +30,7 @@ return new class extends Migration
             $table->time('exit_time')->nullable();
             $table->string('exit_location')->nullable();
             $table->string('exit_photo')->nullable();
-            $table->enum('exit_status', ['on_time', 'early_leave']);
+            $table->enum('exit_status', ['on_time', 'early_leave'])->nullable();
             $table->integer('early_leave_minutes')->nullable();
             $table->text('early_leave_reason')->nullable();
 

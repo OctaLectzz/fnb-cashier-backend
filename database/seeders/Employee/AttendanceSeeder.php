@@ -39,7 +39,7 @@ class AttendanceSeeder extends Seeder
                     Attendance::create([
                         'user_id' => 1,
                         'employee_id' => $employee->id,
-                        'branch_id' => 1,
+                        'branch_id' =>  $employee->branch->id,
                         'date' => $date->toDateString(),
                         'entry_time' => $entryTime->format('H:i'),
                         'entry_location' => $entryLocation,

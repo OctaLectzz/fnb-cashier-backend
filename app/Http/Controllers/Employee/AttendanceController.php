@@ -32,7 +32,6 @@ class AttendanceController extends Controller
     {
         $data = $request->validate([
             'employee_id' => 'required|exists:employees,id',
-            'branch_id' => 'required|exists:branches,id',
             'date' => 'required|date',
             'entry_time' => 'required|date_format:H:i',
             'entry_location' => 'required|string|max:255',
@@ -55,6 +54,9 @@ class AttendanceController extends Controller
                 'message' => 'Schedule not found for this employee.'
             ], 422);
         }
+
+        // Branch
+        $data['branch'] = $employee->branch->id;
 
         // Entry Photo
         if ($request->hasFile('entry_photo')) {
@@ -141,6 +143,9 @@ class AttendanceController extends Controller
                 'message' => 'Schedule not found for this employee.'
             ], 422);
         }
+
+        // Branch
+        $data['branch'] = $employee->branch->id;
 
         // Entry Photo
         if ($request->hasFile('entry_photo')) {
