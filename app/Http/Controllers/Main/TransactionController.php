@@ -56,7 +56,7 @@ class TransactionController extends Controller
                     'transaction_id' => $transaction->id,
                     'product_id' => $transactiondetail['product_id'],
                     'total_price' => $transactiondetail['total_price'],
-                    'quantity' => $transactiondetail['quantity'],
+                    'quantity' => $transactiondetail['quantity']
                 ]);
             }
 
