@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         User::create([
             'avatar' => 'user-profile-default.jpg',
             'name' => 'Wine POS',
-            'email' => 'winepos@gmail.com',
+            'email' => 'admin@winepos.com',
             'password' => bcrypt('password'),
             'phone_number' => '0895 - 6052 - 10002'
         ]);
